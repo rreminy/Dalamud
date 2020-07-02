@@ -18,6 +18,15 @@ jobs:
          nuget-version: 'latest'
       - name: Restore Nuget Packages
         run: nuget restore Dalamud.sln
+      - name: Build DotNet4
+        run: |
+          cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
+           .\MSBuild.exe $Env:GITHUB_WORKSPACE\Dalamud.sln /t:Build /p:Configuration=Release /p:DefineConstants=XL_NOAUTOUPDATE
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dalamud-artifact
+          path: bin\
       # Publish
       - name: publish on version change
         id: publish_nuget
@@ -51,4 +60,4 @@ jobs:
           NUGET_SOURCE: https://nuget.pkg.github.com
 
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          # INCLUDE_SYMBOLS: false
+          INCLUDE_SYMBOLS: true
