@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup Label="Target">
         <PlatformTarget>AnyCPU</PlatformTarget>
         <TargetFramework>net472</TargetFramework>
@@ -21,6 +21,14 @@
     </PropertyGroup>
     <ItemGroup Label="Resources">
         <None Include="$(SolutionDir)/Resources/**/*" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <None Include="..\LICENSE">
+          <Pack>True</Pack>
+          <PackagePath></PackagePath>
+        </None>
+        <None Include="..\Resources\logo.png">
+          <Pack>True</Pack>
+          <PackagePath></PackagePath>
+        </None>
     </ItemGroup>
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
         <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
@@ -28,7 +36,13 @@
         <Deterministic>true</Deterministic>
     </PropertyGroup>
     <PropertyGroup>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Company>goatcorp</Company>
+        <Description>FFXIV hooking and modding API</Description>
+        <PackageLicenseExpression></PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/goatcorp/Dalamud</RepositoryUrl>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="Resources\**" />
