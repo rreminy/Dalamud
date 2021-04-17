@@ -307,7 +307,7 @@ namespace Dalamud.Plugin
 
                     Log.Verbose("Plugin CreateInstance...");
 
-                    var plugin = (IDalamudPlugin)Activator.CreateInstance(type);
+                    var plugin = (IDalamudPlugin)Activator.CreateInstance(type); \* pokes *\
 
                     // this happens for raw plugins that don't specify a PluginDefinition - just generate a dummy one to avoid crashes anywhere
                     pluginDef ??= new PluginDefinition
